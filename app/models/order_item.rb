@@ -7,6 +7,11 @@ class OrderItem < ApplicationRecord
   validate :order_present
   before_save :finalize
 
+  def get_unit_price
+    self.unit_price = Product.find(self.product_id).price
+  end
+
+
   private
     def product_present
       if product.nil?
