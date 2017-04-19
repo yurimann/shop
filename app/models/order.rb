@@ -12,6 +12,16 @@ class Order < ApplicationRecord
     self.order_status_id = 1
   end
 
+  def summarize
+    if self.delivery.nil?
+      self.delivery = 0
+    end
+    if self.tax.nil?
+      self.tax = 0
+    end
+    self.total = self.tax + self.delivery + self.subtotal
+  end
+
   private
 
 
