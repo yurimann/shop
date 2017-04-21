@@ -11,6 +11,7 @@ class OrderItemsController < ApplicationController
       @order_item.get_unit_price
     end
     @order.set_order_status
+    @order.subtotal
     @order.summarize
     @order.save
     session[:order_id] = @order.id
@@ -21,6 +22,9 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
     @order_items = @order.order_items
+    @order.subtotal
+    @order.summarize
+    @order.save
   end
 
   def destroy
@@ -28,6 +32,9 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items
+    @order.subtotal
+    @order.summarize
+    @order.save
   end
 
   private

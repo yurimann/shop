@@ -11,7 +11,10 @@ class OrderItem < ApplicationRecord
     self.unit_price = Product.find(self.product_id).price
   end
 
-  
+
+  def finalize
+    self.total_price = quantity * self.unit_price
+  end
 
   private
     def product_present
@@ -26,7 +29,4 @@ class OrderItem < ApplicationRecord
       end
     end
 
-    def finalize
-      self.total_price = quantity * self.unit_price
-    end
 end
