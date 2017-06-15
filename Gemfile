@@ -10,6 +10,8 @@ gem 'awesome_print'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'stripe'
+gem 'figaro'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

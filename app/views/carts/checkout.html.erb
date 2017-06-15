@@ -1,0 +1,15 @@
+<div class="category">
+  <p>Quantity</p>
+</div>
+<% @order_items.each do |order| %>
+  <div class="checkout-orders">
+    <%= order.quantity %>
+    <%= Product.find(order.product_id).name %>
+    <%= number_to_currency order.total_price %>
+  </div>
+<% end %>
+<p class="text-right">Subtotal: <span style="color: green"><%= number_to_currency current_order.subtotal %></span></p>
+<p class="text-right">Taxes: <span style="color: green"><%= number_to_currency current_order.tax %></span></p>
+<p class="text-right">Delivery: <span style="color: green"><%= number_to_currency current_order.delivery %></span></p>
+<h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency current_order.total %></span></h4>
+<%= render 'users/form' %>

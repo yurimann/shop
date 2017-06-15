@@ -1,0 +1,70 @@
+<%= form_for @user do |f| %>
+  <% @order_items.each do |order| %>
+    <input type="hidden"
+     name="<%= Product.find(order.product_id).name %>"
+     value="<%= order.quantity %>">
+
+    <%# number_to_currency order.total_price %>
+    <% end %>
+  </div>
+  <div class="user-form">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="user-form">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="user-form">
+    <%= f.label :phone %>
+    <%= f.phone_field :phone %>
+  </div>
+  <div class="user-form">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="user-form">
+    <h4>Billing Address</h4>
+    <%= f.label :apartment_number %>
+    <%= f.text_field :apartment_number, size: "5" %>
+    <%= f.label :street%>
+    <%= f.text_field :street %>
+  </div>
+  <div class="user-form">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="user-form">
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="user-form">
+    <h4>Delivery Address</h4>
+    <input type="checkbox" name="test1" class="test">Same as above</br>
+    <%= f.label :apartment_number %>
+    <%= f.text_field :delivery_apartment_number, size: "5" %>
+    <%= f.label :street%>
+    <%= f.text_field :delivery_street %>
+  </div>
+  <div class="user-form">
+    <%= f.label :city %>
+    <%= f.text_field :delivery_city %>
+  </div>
+  <div class="user-form">
+    <%= f.label :postal_code %>
+    <%= f.text_field :delivery_postal_code %>
+  </div>
+  <div class="user-form">
+    <%= f.label 'Contact Person' %>
+    <%= f.text_field :contact %>
+  </div>
+  <div class="user-form">
+    <%= f.label 'Contact Number' %>
+    <%= f.phone_field :contact_number %>
+  </div>
+  <div class="user-form">
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+<%= f.submit "Submit" %>
+<% end %>
