@@ -14,10 +14,10 @@ $(document).on("ready", function(){
       udc.attr("value", $("#user_city").val());
       udpc.attr("value", $("#user_postal_code").val());
 
-      udan.attr("disabled", "true");
-      uds.attr("disabled", "disabled");
-      udc.attr("disabled", "disabled");
-      udpc.attr("disabled", "disabled");
+      // udan.attr("disabled", "true");
+      // uds.attr("disabled", "disabled");
+      // udc.attr("disabled", "disabled");
+      // udpc.attr("disabled", "disabled");
     }
     else {
       udan.attr("disabled", false);

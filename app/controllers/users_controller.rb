@@ -5,15 +5,19 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if User.find(email: @user.email).any?
-      flash[:notice] = "User already exists. Please log in"
+    @order = current_order
+    user = User.find_by(email: @user.email)
+    @order_items = @order.order_items
+    # if user
+    #   user.destroy
+    # end
+    if @user.save
+      flash[:notice] = "User successfully created"
     else
-      if @user.save
-        flash[:notice] = "User successfully created"
-      else
-        render current_path
-      end
+      render current_path
     end
+    byebug
+    UserMailer.order_email(@user, @order_items).deliver_now
   end
 
   private
@@ -32,6 +36,7 @@ class UsersController < ApplicationController
                                  :email,
                                  :contact,
                                  :contact_number,
-                                 :notes)
+                                 :notes,
+                                 :delivery_apartment_number)
   end
 end

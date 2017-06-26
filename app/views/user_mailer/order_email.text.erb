@@ -1,0 +1,21 @@
+
+Thank you for ordering, <%= @user.first_name %>
+------------------------------------------------
+  Here is a summary of your order:
+    <% @order.each do |order| %>
+        <%= order.quantity %> <%= Product.find(order.product_id).name %>
+        <%= number_to_currency order.total_price %>
+    <% end %>
+      Billing address
+      ---------------------------------
+      <%= @user.apartment_number %>, <%= @user.street %>
+      <%= @user.city %>, <%= @user.postal_code %>
+
+      Delivery Address
+      ---------------------------------
+      <%= @user.delivery_apartment_number %>, <%= @user.delivery_street %>
+      <%= @user.delivery_city %>, <%= @user.delivery_postal_code %>
+
+      Delivery Contact Person: <%= @user.contact %>
+      Delivery Contact Number: <%= @user.contact_number %>
+      Notes: <%= @user.notes %>

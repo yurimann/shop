@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for ordering, <%= @user.first_name %></h1>
+    <p>Here is a summary of your order: </p>
+    <% @order.each do |order| %>
+      <div class="checkout-orders">
+        <%= order.quantity %>
+        <%= Product.find(order.product_id).name %>
+        <%= number_to_currency order.total_price %>
+      </div>
+    <% end %>
+    <p class="text-right">Subtotal: <span style="color: green"><%= number_to_currency current_order.subtotal %></span></p>
+    <p class="text-right">Taxes: <span style="color: green"><%= number_to_currency current_order.tax %></span></p>
+    <p class="text-right">Delivery: <span style="color: green"><%= number_to_currency current_order.delivery %></span></p>
+    <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency current_order.total %></span></h4>
+      <h3>Billing Address:</h3>
+      <p><%= @user.apartment_number %>, <%= @user.street %></p>
+      <p><%= @user.city %>, <%= @user.postal_code %></p>
+      <h3>Delivery Address</h3>
+      <p><%= @user.delivery_apartment_number %>, <%= @user.delivery_street %></p>
+      <p><%= @user.delivery_city %>, <%= @user.delivery_postal_code %></p>
+      <h4>Delivery Contact<h4>
+      <p>Delivery Contact Person: <%= @user.contact %></p>
+      <p>Delivery Contact Number: <%= @user.contact_number %></p>
+      <p>Notes: <%= @user.notes %></p>
+  </body>
+</html>
